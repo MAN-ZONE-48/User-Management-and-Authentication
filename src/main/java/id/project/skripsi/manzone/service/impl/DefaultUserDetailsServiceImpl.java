@@ -3,7 +3,6 @@ package id.project.skripsi.manzone.service.impl;
 import id.project.skripsi.manzone.dao.UserRepository;
 import id.project.skripsi.manzone.domain.UserData;
 import id.project.skripsi.manzone.domain.UserRole;
-import id.project.skripsi.manzone.dto.UserDetail;
 import id.project.skripsi.manzone.service.DefaultUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class DefaultUserDetailsServiceImpl implements DefaultUserDetailsService {
