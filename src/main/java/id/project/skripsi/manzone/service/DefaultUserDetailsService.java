@@ -4,6 +4,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface DefaultUserDetailsService {
 
-    UserDetails loadUserByUsername(String userName);
+    UserDetails loadUserByUsername(String userName, String password);
 
 }
