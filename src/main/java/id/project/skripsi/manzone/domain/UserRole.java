@@ -20,9 +20,6 @@ public class UserRole {
     @Column(name = "id")
     private String userRoleId;
 
-    @Column(name = "user_id")
-    private String userId;
-
     @Column(name = "user_role")
     private String userRoleName;
 
@@ -37,14 +34,6 @@ public class UserRole {
 
     public void setUserRoleId(String userRoleId) {
         this.userRoleId = userRoleId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserRoleName() {
@@ -69,21 +58,19 @@ public class UserRole {
         if (o == null || getClass() != o.getClass()) return false;
         UserRole userRole = (UserRole) o;
         return userRoleId.equals(userRole.userRoleId) &&
-                userId.equals(userRole.userId) &&
                 userRoleName.equals(userRole.userRoleName) &&
                 userData.equals(userRole.userData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userRoleId, userId, userRoleName, userData);
+        return Objects.hash(userRoleId, userRoleName, userData);
     }
 
     @Override
     public String toString() {
         return "UserRole{" +
                 "userRoleId='" + userRoleId + '\'' +
-                ", userId='" + userId + '\'' +
                 ", userRoleName='" + userRoleName + '\'' +
                 ", userData=" + userData +
                 '}';

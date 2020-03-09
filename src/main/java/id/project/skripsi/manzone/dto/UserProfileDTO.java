@@ -5,14 +5,12 @@ public class UserProfileDTO {
     private String userName;
     private String userPhone;
     private String userEmail;
-    private String userPassword;
 
 
     public static class Builder{
         private String userName;
         private String userPhone;
         private String userEmail;
-        private String userPassword;
 
         public Builder(String userName) {
             this.userName = userName;
@@ -27,11 +25,6 @@ public class UserProfileDTO {
         public Builder withPhoneNumber(String userPhone){
             this.userPhone = userPhone;
             return this;
-        }
-
-        public Builder withPassword(String userPassword){
-           this.userPassword = userPassword;
-           return this;
         }
 
         public UserProfileDTO build(){
