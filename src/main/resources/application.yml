@@ -1,8 +1,14 @@
+spring:
+  security:
+    user:
+      name: made
+      password: test123
+      roles: ADMIN
 security:
-  oauth2:
-    client:
-      client-id: client_id
-      client_secret: secret
-      access-token-validity-seconds: 3600
-      authorized-grant-types: refresh_token,authorization_code,password,client_credentials
-      scope: READ,WRITE
+    oauth2:
+      client:
+        client-id: super_admin
+        client-secret: super_admin_secret
+        access-token-validity-seconds: 3600
+        authorized-grant-types: refresh_token,authorization_code,password,client_credentials
+        scope: READ,WRITE
