@@ -29,5 +29,4 @@ public class RegisterController {
         UserData currentUserData = registerService.saveUserData(registerResponse);
         return new ResponseEntity(currentUserData, HttpStatus.OK);
     }
-
 }
