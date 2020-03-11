@@ -20,7 +20,8 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public UserData saveUserData(RegisterResponse registerResponse) {
         UserData userData = new UserData();
-        userData.set
+        userData.setUserName(registerResponse.getData().getUserName());
+        userData.setUserAddress(registerResponse.getData().getUserAddress());
         return userRepository.save(userData);
     }
 }

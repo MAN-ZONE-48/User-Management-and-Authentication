@@ -54,7 +54,6 @@
             <version>2.3.0</version>
         </dependency>
 
-        <!-- Security Configuration-->
         <!-- Spring Security-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,8 +72,13 @@
             <version>2.1.8.RELEASE</version>
         </dependency>
 
-        <!--Swagger Ui Configuration-->
+        <!-- Spring Email Configuration -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
 
+        <!--Swagger Ui Configuration-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
