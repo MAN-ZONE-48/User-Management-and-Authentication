@@ -3,7 +3,7 @@ spring:
     user:
       name: made
       password: test123
-      roles: ADMIN
+      roles: SUPER_ADMIN
 security:
     oauth2:
       client:

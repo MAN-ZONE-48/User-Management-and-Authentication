@@ -25,7 +25,6 @@ public class UserRole {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_ROLE_USER"))
     private UserData userData;
 
     public String getUserRoleId() {

@@ -6,6 +6,7 @@ public class RegisterUserDTO {
     private String userAddress;
     private String userPassword;
     private String userPhone;
+    private UserRoleDTO userRole;
 
 
     public String getUserName() {
@@ -34,5 +35,13 @@ public class RegisterUserDTO {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+
+    public UserRoleDTO getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRoleDTO userRole) {
+        this.userRole = userRole;
     }
 }
