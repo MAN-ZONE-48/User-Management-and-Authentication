@@ -20,6 +20,7 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public UserData saveUserData(RegisterResponse registerResponse) {
         UserData userData = new UserData();
+        userData.set
         return userRepository.save(userData);
     }
 }

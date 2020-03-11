@@ -1,7 +1,7 @@
 package id.project.skripsi.manzone.constant;
 
 public enum AppConstant {
-    FAIIED("FAILED"),SUCCESS("SUCCESS");
+    FAILED("FAILED"),SUCCESS("SUCCESS");
 
     private String message;
 
