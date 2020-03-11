@@ -4,6 +4,9 @@ public class RegisterUserDTO {
 
     private String userName;
     private String userAddress;
+    private String userPassword;
+    private String userPhone;
+
 
     public String getUserName() {
         return userName;
@@ -16,4 +19,20 @@ public class RegisterUserDTO {
     public String getUserAddress() { return userAddress; }
 
     public void setUserAddress(String userAddress) { this.userAddress = userAddress; }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
 }
