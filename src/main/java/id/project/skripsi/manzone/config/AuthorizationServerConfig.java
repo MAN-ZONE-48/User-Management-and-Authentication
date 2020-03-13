@@ -40,6 +40,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes("READ","WRITE").authorizedGrantTypes("password","refresh_token")
                 .accessTokenValiditySeconds(3600000)
                 .refreshTokenValiditySeconds(3600000);
+
     }
 
     @Override
