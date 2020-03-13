@@ -29,7 +29,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity getUserInfo(@RequestBody LoginResponse loginResponse){
-        return new ResponseEntity(loginService.getUserAccount(loginResponse), HttpStatus.OK);
+        loginService.getUserAccount(loginResponse);
+        return new ResponseEntity("Login Success!", HttpStatus.OK);
     }
 
 }
