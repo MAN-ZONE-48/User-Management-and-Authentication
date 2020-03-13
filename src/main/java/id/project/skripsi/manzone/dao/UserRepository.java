@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 @Transactional
 public interface UserRepository extends JpaRepository<UserData,String> {
 
-    @Query(value = "SELECT * FROM user_data WHERE userName = :userName", nativeQuery = true)
-    UserData findUserDataByUserName(@Param(value = "userName") String userName);
+
+    UserData findUserDataByUserName(String userName);
 
 }
