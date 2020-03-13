@@ -31,7 +31,7 @@ public class DefaultUserDetailsServiceImpl implements UserDetailsService{
     }
 
     private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles){
-        List<GrantedAuthority> setAuths = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> setAuths = new ArrayList<>();
 
         for(UserRole userRole : userRoles){
             setAuths.add(new SimpleGrantedAuthority(userRole.getUserRoleName()));

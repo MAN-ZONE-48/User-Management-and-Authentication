@@ -37,6 +37,7 @@ public class RegisterServiceImpl implements RegisterService {
         userData.setUserAddress(registerResponse.getData().getUserAddress());
         userData.setUserPassword(passwordEncoder.encode(registerResponse.getData().getUserPassword()));
         userData.setUserPhone(registerResponse.getData().getUserPhone());
+        userData.setUserEnable(true);
         userData.setUserRole(userRoleList);
 
         return userRepository.save(userData);
