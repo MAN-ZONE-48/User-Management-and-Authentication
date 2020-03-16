@@ -7,11 +7,13 @@ import id.project.skripsi.manzone.service.impl.DefaultUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 @RestController
@@ -28,9 +30,10 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity getUserInfo(@RequestBody LoginResponse loginResponse){
+    public ResponseEntity userLogin(@RequestBody LoginResponse loginResponse){
         loginService.getUserAccount(loginResponse);
         return new ResponseEntity("Login Success!", HttpStatus.OK);
     }
+
 
 }
