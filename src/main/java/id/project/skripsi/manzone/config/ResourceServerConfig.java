@@ -8,22 +8,21 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     private static final String RESOURCE_ID = "resource_server-rest-api";
     private static final String SECURED_READ_SCOPE = "#oauth2.hasScope('read')";
     private static final String SECURED_WRITE_SCOPE = "#oauth2.hasScope('write')";
-    private static final String SECURED_PATTERN = "/secured/**";
+    private static final String SECURED_PATTERN = "/v1/secured";
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId(RESOURCE_ID)  ;
+        resources.resourceId(RESOURCE_ID);
     }
 
     @Override

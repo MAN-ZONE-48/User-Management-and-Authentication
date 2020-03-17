@@ -21,6 +21,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     final AuthenticationManager authenticationManager;
     final UserDetailsService userDetailsService;
 
+
+    @Autowired
     public AuthorizationServerConfig(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
