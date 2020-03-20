@@ -1,11 +1,16 @@
 package id.project.skripsi.manzone.dto;
 
+import java.util.Date;
+
 public class RegisterUserDTO {
 
     private String userName;
     private String userAddress;
     private String userPassword;
     private String userPhone;
+    private String userGender;
+    private String userEmail;
+    private Date userDob;
     private UserRoleDTO userRole;
 
 
@@ -44,4 +49,16 @@ public class RegisterUserDTO {
     public void setUserRole(UserRoleDTO userRole) {
         this.userRole = userRole;
     }
+
+    public Date getUserDob() { return userDob; }
+
+    public void setUserDob(Date userDob) { this.userDob = userDob; }
+
+    public String getUserGender() { return userGender; }
+
+    public void setUserGender(String userGender) { this.userGender = userGender; }
+
+    public String getUserEmail() { return userEmail; }
+
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 }
