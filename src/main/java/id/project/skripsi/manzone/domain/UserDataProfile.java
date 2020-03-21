@@ -1,7 +1,9 @@
 package id.project.skripsi.manzone.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -21,19 +23,17 @@ public class UserDataProfile{
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(
-            name = "id"
-    )
+    @Column(name = "id")
     private String id;
-    @Column(
-            name = "created_at"
-    )
-    @CreatedDate
+
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdAt;
-    @Column(
-            name = "last_modified"
-    )
-    @LastModifiedDate
+
+    @Column(name = "last_modified")
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastModified;
 
     @Column(name = "user_full_name")
