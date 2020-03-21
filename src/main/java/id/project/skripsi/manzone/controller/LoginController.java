@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -32,14 +33,4 @@ public class LoginController {
         loginService.getUserAccount(loginResponse);
         return new ResponseEntity("Login Success!", HttpStatus.OK);
     }
-
-    @GetMapping("/userProfile")
-    public ResponseEntity getUserProfile(@RequestHeader(name = "Authorization") String token){
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer "+token);
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return new ResponseEntity(authentication.getName(),HttpStatus.OK);
-    }
-
 }

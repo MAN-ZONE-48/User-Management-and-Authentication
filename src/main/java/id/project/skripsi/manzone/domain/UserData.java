@@ -1,25 +1,36 @@
 package id.project.skripsi.manzone.domain;
 
-import org.codehaus.jackson.annotate.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 
 @Entity
 @Table(name = "user_data")
-public class UserData {
+public class UserData{
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
-    private String userId;
+    private String id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    @Column(name = "last_modified")
+    private Date lastModified;
 
     @Column(name = "user_name")
     private String userName;
@@ -39,17 +50,19 @@ public class UserData {
     @Column(name = "user_password")
     private String userPassword;
 
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_dob")
+    private Date userDob;
+
     @OneToMany(fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonBackReference
     private List<UserRole> userRole;
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    @OneToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
+    private UserDataProfile userDataProfile;
 
     public String getUserName() {
         return userName;
@@ -95,37 +108,71 @@ public class UserData {
 
     public void setUserRole(List<UserRole> userRole) { this.userRole = userRole; }
 
+    public Date getUserDob() { return userDob; }
+
+    public void setUserDob(Date userDob) { this.userDob = userDob; }
+
+    public UserDataProfile getUserDataProfile() { return userDataProfile; }
+
+    public void setUserDataProfile(UserDataProfile userDataProfile) { this.userDataProfile = userDataProfile; }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
+
+    public Date getCreatedAt() { return createdAt; }
+
+    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
+
+    public Date getLastModified() { return lastModified; }
+
+    public void setLastModified(Date lastModified) { this.lastModified = lastModified; }
+
+    public String getUserEmail() { return userEmail; }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserData userData = (UserData) o;
         return userEnable == userData.userEnable &&
-                userId.equals(userData.userId) &&
+                id.equals(userData.id) &&
+                createdAt.equals(userData.createdAt) &&
+                lastModified.equals(userData.lastModified) &&
                 userName.equals(userData.userName) &&
                 Objects.equals(userAddress, userData.userAddress) &&
                 userGender.equals(userData.userGender) &&
                 Objects.equals(userPhone, userData.userPhone) &&
                 userPassword.equals(userData.userPassword) &&
-                userRole.equals(userData.userRole);
+                userDob.equals(userData.userDob) &&
+                userRole.equals(userData.userRole) &&
+                userDataProfile.equals(userData.userDataProfile);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, userAddress, userGender, userPhone, userEnable, userPassword, userRole);
+        return Objects.hash(id, createdAt, lastModified, userName, userAddress, userGender, userPhone, userEnable, userPassword, userDob, userRole, userDataProfile);
     }
 
     @Override
     public String toString() {
         return "UserData{" +
-                "userId='" + userId + '\'' +
+                "id='" + id + '\'' +
+                ", createdAt=" + createdAt +
+                ", lastModified=" + lastModified +
                 ", userName='" + userName + '\'' +
                 ", userAddress='" + userAddress + '\'' +
                 ", userGender='" + userGender + '\'' +
                 ", userPhone='" + userPhone + '\'' +
                 ", userEnable=" + userEnable +
                 ", userPassword='" + userPassword + '\'' +
+                ", userDob=" + userDob +
                 ", userRole=" + userRole +
+                ", userDataProfile=" + userDataProfile +
                 '}';
     }
 }
