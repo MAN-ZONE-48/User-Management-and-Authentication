@@ -37,6 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anonymous().disable()
                 .authorizeRequests()
                 .antMatchers("/oauth/token")
-                .hasRole("SUPER_ADMIN");
+                .permitAll();
     }
 }
