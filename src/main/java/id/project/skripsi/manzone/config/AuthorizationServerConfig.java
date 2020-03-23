@@ -37,8 +37,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer client) throws Exception {
         client.inMemory()
-                .withClient("SUPER_ADMIN")
-                .secret("SUPER_ADMIN_SECRET")
+                .withClient("CLIENT_ID")
+                .secret("CLIENT_SECRET")
                 .scopes("READ","WRITE").authorizedGrantTypes("password","refresh_token")
                 .accessTokenValiditySeconds(3600000)
                 .refreshTokenValiditySeconds(3600000);

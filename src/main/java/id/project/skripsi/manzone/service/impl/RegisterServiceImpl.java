@@ -4,6 +4,7 @@ import id.project.skripsi.manzone.dao.UserRepository;
 import id.project.skripsi.manzone.dao.UserRoleRepository;
 import id.project.skripsi.manzone.domain.UserData;
 import id.project.skripsi.manzone.domain.UserRole;
+import id.project.skripsi.manzone.dto.RegisterUserDTO;
 import id.project.skripsi.manzone.dto.response.RegisterResponse;
 import id.project.skripsi.manzone.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,30 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public UserData saveUserData(RegisterResponse registerResponse) {
+    public RegisterResponse saveUserDataForRegisterOwner(RegisterResponse registerResponse) {
+        try {
+            UserData userData = new UserData();
+            UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName("OWNER");
+            insertData(userData, registerResponse, currentUserRole);
+
+            userRepository.save(userData);
+            return registerResponse;
+        }catch(Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public RegisterResponse saveUserDataForOwner(RegisterResponse registerResponse) {
         UserData userData = new UserData();
         UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName(registerResponse.getData().getUserRole().getUserRoleName());
+        insertData(userData,registerResponse, currentUserRole);
+
+        userRepository.save(userData);
+        return registerResponse;
+    }
+
+    private void insertData(UserData userData, RegisterResponse registerResponse, UserRole currentUserRole){
         List<UserRole> userRoleList = new ArrayList<>();
         userRoleList.add(currentUserRole);
         userData.setUserName(registerResponse.getData().getUserName());
@@ -42,7 +64,5 @@ public class RegisterServiceImpl implements RegisterService {
         userData.setUserDob(registerResponse.getData().getUserDob());
         userData.setUserGender(registerResponse.getData().getUserGender());
         userData.setUserEmail(registerResponse.getData().getUserEmail());
-
-        return userRepository.save(userData);
     }
 }

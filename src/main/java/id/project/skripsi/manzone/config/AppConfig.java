@@ -24,4 +24,5 @@ public class AppConfig {
                 .setReadTimeout(timeout)
                 .build();
     }
+
 }
