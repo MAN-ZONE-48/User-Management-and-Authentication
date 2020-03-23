@@ -28,9 +28,24 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public UserData saveUserData(RegisterResponse registerResponse) {
+    public UserData saveUserDataForRegisterOwner(RegisterResponse registerResponse) {
+        UserData userData = new UserData();
+        UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName("OWNER");
+        insertData(userData,registerResponse, currentUserRole);
+
+        return userRepository.save(userData);
+    }
+
+    @Override
+    public UserData saveUserDataForOwner(RegisterResponse registerResponse) {
         UserData userData = new UserData();
         UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName(registerResponse.getData().getUserRole().getUserRoleName());
+        insertData(userData,registerResponse, currentUserRole);
+
+        return userRepository.save(userData);
+    }
+
+    private void insertData(UserData userData, RegisterResponse registerResponse, UserRole currentUserRole){
         List<UserRole> userRoleList = new ArrayList<>();
         userRoleList.add(currentUserRole);
         userData.setUserName(registerResponse.getData().getUserName());
@@ -42,7 +57,5 @@ public class RegisterServiceImpl implements RegisterService {
         userData.setUserDob(registerResponse.getData().getUserDob());
         userData.setUserGender(registerResponse.getData().getUserGender());
         userData.setUserEmail(registerResponse.getData().getUserEmail());
-
-        return userRepository.save(userData);
     }
 }

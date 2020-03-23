@@ -21,9 +21,14 @@ public class RegisterController {
     }
 
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getLoginUser(@RequestBody RegisterResponse registerResponse){
+    public ResponseEntity registerUserForOwner(@RequestBody RegisterResponse registerResponse){
 
-        UserData currentUserData = registerService.saveUserData(registerResponse);
+        UserData currentUserData = registerService.saveUserDataForRegisterOwner(registerResponse);
         return new ResponseEntity(currentUserData, HttpStatus.OK);
+    }
+    @PostMapping(value = "/createUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity registerUserFromOwnerToAllStaff(@RequestBody RegisterResponse registerResponse){
+        UserData currentUserData = registerService.saveUserDataForOwner(registerResponse);
+        return new ResponseEntity(currentUserData,HttpStatus.OK);
     }
 }
