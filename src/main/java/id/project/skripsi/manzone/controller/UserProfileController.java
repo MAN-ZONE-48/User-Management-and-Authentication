@@ -29,12 +29,17 @@ public class UserProfileController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader(value = "Authorization") String token, HttpServletResponse response){
+    public ResponseEntity getUserProfile(@RequestHeader(value = "Authorization") String token, HttpServletResponse response) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization","Bearer "+token);
+        headers.add("Authorization", "Bearer " + token);
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserProfileDTO responseProfile = userService.getUserProfile(authentication);
-        return new ResponseEntity(new Response(false,response.getStatus(),OK.getMessage(),responseProfile), HttpStatus.OK);
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            UserProfileDTO responseProfile = userService.getUserProfile(authentication);
+            return new ResponseEntity(new Response(false, response.getStatus(), OK.getMessage(), responseProfile), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity(new Response(true, response.getStatus(), INTERNAL_SERVER_ERROR.getMessage(), INTERNAL_SERVER_ERROR.getMessage() + e.getMessage()), HttpStatus.OK);
+
+        }
     }
 }
