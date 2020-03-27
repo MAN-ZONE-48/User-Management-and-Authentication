@@ -1,6 +1,7 @@
 package id.project.skripsi.manzone.service.impl;
 
 import id.project.skripsi.manzone.dao.UserRepository;
+import id.project.skripsi.manzone.dao.UserRoleRepository;
 import id.project.skripsi.manzone.domain.UserData;
 import id.project.skripsi.manzone.domain.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,12 @@ import java.util.List;
 public class DefaultUserDetailsServiceImpl implements UserDetailsService{
 
     final UserRepository userRepository;
+    final UserRoleRepository userRoleRepository;
 
     @Autowired
-    public DefaultUserDetailsServiceImpl(UserRepository userRepository) {
+    public DefaultUserDetailsServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRepository;
     }
 
 
@@ -42,7 +45,8 @@ public class DefaultUserDetailsServiceImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UserData currentUserData = userRepository.findUserDataByUserName(userName);
-        List<GrantedAuthority> authorities = buildUserAuthority(currentUserData.getUserRole());
+        List<UserRole> roles = userRoleRepository.getAllUserRole();
+        List<GrantedAuthority> authorities = buildUserAuthority(roles);
 
         if(!currentUserData.getUserName().equals(userName)) throw new UsernameNotFoundException("Invalid Username!");
         return buildUserForAuthentication(currentUserData,authorities);

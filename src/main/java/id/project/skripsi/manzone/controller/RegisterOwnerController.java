@@ -18,20 +18,20 @@ import static com.java.common.lib.constant.ResponseConstant.INTERNAL_SERVER_ERRO
 import static com.java.common.lib.constant.ResponseConstant.OK;
 
 @RestController
-@RequestMapping("/v1")
-public class RegisterController {
+@RequestMapping("/auth")
+public class RegisterOwnerController {
 
     final RegisterService registerService;
 
     @Autowired
-    public RegisterController(RegisterService registerService) {
+    public RegisterOwnerController(RegisterService registerService) {
         this.registerService = registerService;
     }
 
-    @PostMapping(value = "/createUser", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity registerUserFromOwnerToAllStaff(@RequestBody RegisterResponse registerResponse, HttpServletResponse response) {
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity registerUserForOwner(@RequestBody RegisterResponse registerResponse, HttpServletResponse response) {
+        RegisterResponse currentUserData = registerService.saveUserDataForRegisterOwner(registerResponse);
         try {
-            RegisterResponse currentUserData = registerService.saveUserDataForOwner(registerResponse);
             return new ResponseEntity(new Response(false, response.getStatus(), OK.getMessage(), currentUserData), HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity(new Response(true, response.getStatus(),INTERNAL_SERVER_ERROR.getMessage(), INTERNAL_SERVER_ERROR.getMessage() + e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);

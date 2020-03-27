@@ -1,12 +1,10 @@
 package id.project.skripsi.manzone.controller;
 
 import com.java.common.lib.dto.Response;
-import id.project.skripsi.manzone.domain.UserRole;
 import id.project.skripsi.manzone.dto.UserDTO;
 import id.project.skripsi.manzone.dto.response.UserRoleResponse;
 import id.project.skripsi.manzone.service.UserRoleService;
 import id.project.skripsi.manzone.service.UserService;
-import org.apache.http.client.methods.HttpHead;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static com.java.common.lib.constant.ResponseConstant.*;
+import static com.java.common.lib.constant.ResponseConstant.OK;
 
 @RestController
 @RequestMapping("/v1")

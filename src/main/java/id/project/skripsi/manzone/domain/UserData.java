@@ -56,9 +56,9 @@ public class UserData{
     @Column(name = "user_dob")
     private Date userDob;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
-    private List<UserRole> userRole;
+    private UserRole userRole;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JsonBackReference
@@ -104,9 +104,13 @@ public class UserData{
 
     public void setUserEnable(boolean userEnable) { this.userEnable = userEnable; }
 
-    public List<UserRole> getUserRole() { return userRole; }
+    public UserRole getUserRole() {
+        return userRole;
+    }
 
-    public void setUserRole(List<UserRole> userRole) { this.userRole = userRole; }
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
     public Date getUserDob() { return userDob; }
 
