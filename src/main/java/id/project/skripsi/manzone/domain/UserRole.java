@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,9 +21,9 @@ public class UserRole{
     @Column(name = "user_role")
     private String userRoleName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JsonManagedReference
-    private UserData userData;
+    private List<UserData> userData;
 
     public String getUserRoleName() {
         return userRoleName;
@@ -32,11 +33,11 @@ public class UserRole{
         this.userRoleName = userRoleName;
     }
 
-    public UserData getUserData() {
+    public List<UserData> getUserData() {
         return userData;
     }
 
-    public void setUserData(UserData userData) {
+    public void setUserData(List<UserData> userData) {
         this.userData = userData;
     }
 
