@@ -36,12 +36,12 @@ public class LoginServiceImpl implements LoginService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginResponse.getData().getUsername());
         UserData userData =  userRepository.findUserDataByUserName(loginResponse.getData().getUsername());
 
+        if(userDetails == null || !passwordEncoder.matches(loginResponse.getData().getPassword(),userData.getUserPassword()))
+            throw new UsernameNotFoundException("Incorrect Username or Password!");
+
         Authentication request = new UsernamePasswordAuthenticationToken(userData.getUserName(), userData.getUserPassword(), userDetails.getAuthorities());
         Authentication response = authenticationManager.authenticate(request);
         SecurityContextHolder.getContext().setAuthentication(response);
-
-        if(userDetails == null || !passwordEncoder.matches(loginResponse.getData().getPassword(),userData.getUserPassword()))
-            throw new UsernameNotFoundException("Incorrect Username or Password!");
 
         return loginResponse;
     }

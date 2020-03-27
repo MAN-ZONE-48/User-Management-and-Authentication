@@ -1,5 +1,6 @@
 package id.project.skripsi.manzone.controller;
 
+import com.java.common.lib.dto.Response;
 import id.project.skripsi.manzone.dto.UserProfileDTO;
 import id.project.skripsi.manzone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import static com.java.common.lib.constant.ResponseConstant.*;
+
 @RestController
 @RequestMapping("/v1")
 public class UserProfileController {
@@ -25,12 +29,12 @@ public class UserProfileController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader(value = "Authorization") String token){
+    public ResponseEntity getUserProfile(@RequestHeader(value = "Authorization") String token, HttpServletResponse response){
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization","Bearer "+token);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserProfileDTO responseProfile = userService.getUserProfile(authentication);
-        return new ResponseEntity(responseProfile, HttpStatus.OK);
+        return new ResponseEntity(new Response(false,response.getStatus(),OK.getMessage(),responseProfile), HttpStatus.OK);
     }
 }
