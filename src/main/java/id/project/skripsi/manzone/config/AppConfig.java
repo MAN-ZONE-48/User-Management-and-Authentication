@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EntityScan("com.java.common.lib.domain")
+@EntityScan("com.java.common.lib")
 @ComponentScan("com.java.common.lib")
 @EnableSwagger2
 public class AppConfig {
