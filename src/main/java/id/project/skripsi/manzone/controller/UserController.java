@@ -1,5 +1,6 @@
 package id.project.skripsi.manzone.controller;
 
+import com.java.common.lib.constant.StatusConstant;
 import com.java.common.lib.dto.Response;
 import id.project.skripsi.manzone.dto.UserDTO;
 import id.project.skripsi.manzone.dto.response.UserRoleResponse;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static com.java.common.lib.constant.ResponseConstant.OK;
 
 @RestController
 @RequestMapping("/v1")
@@ -36,7 +36,7 @@ public class UserController {
         headers.set("Authorization",token);
 
         UserRoleResponse roleResponse = userRoleService.getUserRole();
-        return new ResponseEntity(new Response(false,response.getStatus(),OK.getMessage(),roleResponse), HttpStatus.OK);
+        return new ResponseEntity(new Response(false,response.getStatus(), StatusConstant.OK.getMessage(),roleResponse), HttpStatus.OK);
     }
 
     @GetMapping("/getAllUser")
@@ -45,6 +45,6 @@ public class UserController {
         headers.set("Authorization",token);
 
         List<UserDTO> userDTOList = userService.getAllUser();
-        return new ResponseEntity(new Response(false,response.getStatus(),OK.getMessage(),userDTOList), HttpStatus.OK);
+        return new ResponseEntity(new Response(false,response.getStatus(),StatusConstant.OK.getMessage(),userDTOList), HttpStatus.OK);
     }
 }

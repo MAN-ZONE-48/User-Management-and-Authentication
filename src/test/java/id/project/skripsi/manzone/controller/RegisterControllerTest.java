@@ -72,8 +72,8 @@ public class RegisterControllerTest {
     }
 
     @Test
-    public void testRegisterForOwnerAndExpectStatusIsOk() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/register").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
+    public void testCreateOwnerAndExpectStatusIsOk() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/v1/createUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
                 .andExpect(status().isOk()).andReturn();
     }
 }
