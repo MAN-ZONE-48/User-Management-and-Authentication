@@ -1,5 +1,7 @@
 package id.project.skripsi.manzone.controller;
 
+import com.java.common.lib.constant.MessageConstant;
+import com.java.common.lib.constant.StatusConstant;
 import com.java.common.lib.dto.Response;
 import id.project.skripsi.manzone.dto.UserProfileDTO;
 import id.project.skripsi.manzone.service.UserService;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import static com.java.common.lib.constant.ResponseConstant.*;
 
 @RestController
 @RequestMapping("/v1")
@@ -36,9 +37,9 @@ public class UserProfileController {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             UserProfileDTO responseProfile = userService.getUserProfile(authentication);
-            return new ResponseEntity(new Response(false, response.getStatus(), OK.getMessage(), responseProfile), HttpStatus.OK);
+            return new ResponseEntity(new Response(false, response.getStatus(), StatusConstant.OK.getMessage(), responseProfile), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity(new Response(true, response.getStatus(), INTERNAL_SERVER_ERROR.getMessage(), INTERNAL_SERVER_ERROR.getMessage() + e.getMessage()), HttpStatus.OK);
+            return new ResponseEntity(new Response(true, response.getStatus(), StatusConstant.INTERNAL_SERVER_ERROR.getMessage(), MessageConstant.INTERNAL_SERVER_ERROR.getMessage() + e.getMessage()), HttpStatus.OK);
 
         }
     }
