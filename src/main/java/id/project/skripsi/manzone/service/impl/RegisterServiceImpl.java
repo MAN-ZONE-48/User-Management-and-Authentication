@@ -1,9 +1,9 @@
 package id.project.skripsi.manzone.service.impl;
 
+import com.java.common.lib.domain.UserData;
+import com.java.common.lib.domain.UserRole;
 import id.project.skripsi.manzone.dao.UserRepository;
 import id.project.skripsi.manzone.dao.UserRoleRepository;
-import id.project.skripsi.manzone.domain.UserData;
-import id.project.skripsi.manzone.domain.UserRole;
 import id.project.skripsi.manzone.dto.response.RegisterResponse;
 import id.project.skripsi.manzone.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package id.project.skripsi.manzone.service.impl;
 
+import com.java.common.lib.domain.UserRole;
 import id.project.skripsi.manzone.dao.UserRoleRepository;
-import id.project.skripsi.manzone.domain.UserRole;
 import id.project.skripsi.manzone.dto.RoleDTO;
 import id.project.skripsi.manzone.dto.response.UserRoleResponse;
 import id.project.skripsi.manzone.service.UserRoleService;

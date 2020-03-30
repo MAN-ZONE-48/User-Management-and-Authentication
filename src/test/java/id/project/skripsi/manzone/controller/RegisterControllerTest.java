@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import id.project.skripsi.manzone.domain.UserData;
 import id.project.skripsi.manzone.dto.RegisterUserDTO;
 import id.project.skripsi.manzone.dto.UserRoleDTO;
 import id.project.skripsi.manzone.dto.response.RegisterResponse;
