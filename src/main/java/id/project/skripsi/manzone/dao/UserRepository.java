@@ -1,9 +1,8 @@
 package id.project.skripsi.manzone.dao;
 
-import id.project.skripsi.manzone.domain.UserData;
+import com.java.common.lib.domain.UserData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;

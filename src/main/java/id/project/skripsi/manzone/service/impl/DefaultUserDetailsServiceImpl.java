@@ -2,8 +2,6 @@ package id.project.skripsi.manzone.service.impl;
 
 import id.project.skripsi.manzone.dao.UserRepository;
 import id.project.skripsi.manzone.dao.UserRoleRepository;
-import id.project.skripsi.manzone.domain.UserData;
-import id.project.skripsi.manzone.domain.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.java.common.lib.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;

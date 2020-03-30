@@ -1,7 +1,7 @@
 package id.project.skripsi.manzone.service.impl;
 
+import com.java.common.lib.domain.UserData;
 import id.project.skripsi.manzone.dao.UserRepository;
-import id.project.skripsi.manzone.domain.UserData;
 import id.project.skripsi.manzone.dto.UserDTO;
 import id.project.skripsi.manzone.dto.UserProfileDTO;
 import id.project.skripsi.manzone.service.UserService;
