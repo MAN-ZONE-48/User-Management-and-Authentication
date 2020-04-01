@@ -33,20 +33,17 @@ public class DefaultUserDetailsServiceImpl implements UserDetailsService{
         return new User(userData.getUserName(),userData.getUserPassword(), userData.isUserEnable(),true,true,true, authorities);
     }
 
-    private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles){
+    private List<GrantedAuthority> buildUserAuthority(UserData userData){
         List<GrantedAuthority> setAuths = new ArrayList<>();
+        setAuths.add(new SimpleGrantedAuthority(userData.getUserRole().getUserRoleName()));
 
-        for(UserRole userRole : userRoles){
-            setAuths.add(new SimpleGrantedAuthority(userRole.getUserRoleName()));
-        }
         return setAuths;
     }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UserData currentUserData = userRepository.findUserDataByUserName(userName);
-        List<UserRole> roles = userRoleRepository.getAllUserRole();
-        List<GrantedAuthority> authorities = buildUserAuthority(roles);
+        List<GrantedAuthority> authorities = buildUserAuthority(currentUserData);
 
         if(!currentUserData.getUserName().equals(userName)) throw new UsernameNotFoundException("Invalid Username!");
         return buildUserForAuthentication(currentUserData,authorities);

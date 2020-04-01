@@ -30,7 +30,7 @@ public class RegisterController {
     @PostMapping(value = "/createUser", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity registerUserFromOwnerToAllStaff(@RequestBody RegisterResponse registerResponse, HttpServletResponse response) {
         try {
-            RegisterResponse currentUserData = registerService.saveUserDataForOwner(registerResponse);
+            String currentUserData = registerService.saveUserDataForOwner(registerResponse);
             return new ResponseEntity(new Response(false, response.getStatus(), StatusConstant.OK.getMessage(), currentUserData), HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity(new Response(true, response.getStatus(), StatusConstant.INTERNAL_SERVER_ERROR.getMessage(), MessageConstant.INTERNAL_SERVER_ERROR.getMessage() + e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
