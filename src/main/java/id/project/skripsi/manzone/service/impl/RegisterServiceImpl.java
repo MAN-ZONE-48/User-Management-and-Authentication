@@ -25,27 +25,27 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public RegisterResponse saveUserDataForRegisterOwner(RegisterResponse registerResponse) {
+    public String saveUserDataForRegisterOwner(RegisterResponse registerResponse) {
         try {
             UserData userData = new UserData();
             UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName("OWNER");
             insertData(userData, registerResponse, currentUserRole);
 
             userRepository.save(userData);
-            return registerResponse;
+            return "Successfully Insert User!";
         }catch(Exception e){
             return null;
         }
     }
 
     @Override
-    public RegisterResponse saveUserDataForOwner(RegisterResponse registerResponse) {
+    public String saveUserDataForOwner(RegisterResponse registerResponse) {
         UserData userData = new UserData();
         UserRole currentUserRole = userRoleRepository.findUserRoleByUserRoleName(registerResponse.getData().getUserRole().getUserRoleName());
         insertData(userData,registerResponse, currentUserRole);
 
         userRepository.save(userData);
-        return registerResponse;
+        return "Success Registered Your Data!";
     }
 
     private void insertData(UserData userData, RegisterResponse registerResponse, UserRole currentUserRole){

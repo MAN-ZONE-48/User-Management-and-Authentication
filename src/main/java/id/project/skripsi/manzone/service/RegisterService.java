@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface RegisterService {
 
-    RegisterResponse saveUserDataForRegisterOwner(RegisterResponse registerResponse);
-    RegisterResponse saveUserDataForOwner(RegisterResponse registerResponse);
+    String saveUserDataForRegisterOwner(RegisterResponse registerResponse);
+    String saveUserDataForOwner(RegisterResponse registerResponse);
 
 }
