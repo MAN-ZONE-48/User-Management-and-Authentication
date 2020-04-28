@@ -1,19 +1,20 @@
+
 INSERT INTO user_role VALUES(
 '9c454a97-4d3e-4d8f-9607-70df27378ed8','SUPER_ADMIN'
-)
+);
 
 INSERT INTO user_role VALUES(
 '0c442853-d318-431f-99f8-a9b4a9d34755','WORKER'
-)
+);
 
 INSERT INTO user_role VALUES(
 'fb56f608-2a2b-4600-abdc-59f62765ad07','SYSTEM_ADMIN'
-)
+);
 
 INSERT INTO user_role VALUES (
 '707a7f46-7d8b-48ca-abdc-92b6b4e49635','OWNER'
-)
+);
 
 INSERT INTO user_role VALUES(
 '329b4024-eb06-4fcc-9288-16f5c2508a5c','STAFF'
-)
+);

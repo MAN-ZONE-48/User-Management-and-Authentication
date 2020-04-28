@@ -42,6 +42,8 @@ public class RegisterControllerTest {
 
     RegisterResponse response = new RegisterResponse();
 
+    final String success = "Successfully Inserted Your Data!";
+
     @Before
     public void setUp() throws JsonProcessingException {
         MockitoAnnotations.initMocks(this);
@@ -61,7 +63,7 @@ public class RegisterControllerTest {
         firstUser.setUserRole(firstUserRole);
 
         response.setData(firstUser);
-        given(registerService.saveUserDataForOwner(response)).willReturn(response);
+        given(registerService.saveUserDataForOwner(response)).willReturn(success);
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE,false);
