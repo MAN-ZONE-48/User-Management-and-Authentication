@@ -29,7 +29,7 @@ public class RegisterOwnerController {
 
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity registerUserForOwner(@RequestBody RegisterResponse registerResponse, HttpServletResponse response) {
-        RegisterResponse currentUserData = registerService.saveUserDataForRegisterOwner(registerResponse);
+        String currentUserData = registerService.saveUserDataForRegisterOwner(registerResponse);
         try {
             return new ResponseEntity(new Response(false, response.getStatus(), StatusConstant.OK.getMessage(), currentUserData), HttpStatus.OK);
         }catch(Exception e){
